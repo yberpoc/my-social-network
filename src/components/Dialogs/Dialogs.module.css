@@ -1,0 +1,64 @@
+.backDialogs{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.dialog{
+    padding: 10px;
+}
+
+.active{
+    color: gold;
+}
+
+.messages{
+    border-left: 1px #ccc solid;
+}
+
+.message{
+    padding: 10px;
+}
+
+.inputBlock{
+    width: 100%;
+    background-color: white;
+}
+
+.containerInput{
+    border-top: 1px #ccc solid;
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input{
+    border: 1px #ccc solid;
+    padding: 10px;
+    width: 450px;
+    border-radius: 10px;
+}
+.input:focus{
+    outline: none;
+}
+
+.btn{
+    background-color: #edf0f5;
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn:hover{
+    background-color: #dae3f3;
+}
+
+.btn:focus{
+    outline: none;
+}

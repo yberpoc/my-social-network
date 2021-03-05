@@ -1,0 +1,55 @@
+.inputBlock{
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.postsBlock{
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 30px ;
+}
+
+
+.input{
+    margin: 20px 0 0 0;
+    border: 1px #ccc solid;
+    border-radius: 10px;
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.input:focus{
+    outline: none;
+    border: 2px #ccc solid;
+}
+
+.btnBlock{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn{
+    margin: 20px 0 0 0;
+    background-color: #edf0f5;
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.posts{
+    margin: 20px 0 0 0;
+}
+
+.btn:hover{
+    background-color: #dae3f3;
+}
+
+.btn:focus{
+    outline: none;
+}

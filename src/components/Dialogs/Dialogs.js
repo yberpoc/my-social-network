@@ -2,7 +2,7 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {addMessageActionCreator, onDialogChangeActionCreator} from "../../Redux/State";
+import {addMessageActionCreator, onDialogChangeActionCreator} from "../../Redux/dialogs-reducer";
 
 const Dialogs = (props) => {
     debugger;
@@ -32,7 +32,9 @@ const Dialogs = (props) => {
                         <div className={s.containerInput}>
                             <input  className={s.input}
                                     onChange={ onDialogChange }
-                                    value={props.addMessage.newDialogMessage} type="text"/>
+                                    value={props.addMessage.newDialogMessage} type="text"
+                                    placeholder='Enter your message...'
+                            />
                             <button
                                 className={s.btn}
                                 onClick={ addMessage }

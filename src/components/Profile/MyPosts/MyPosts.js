@@ -1,13 +1,13 @@
 import React from 'react'
 import s from './MyPosts.module.css'
 import Post from "./Posts/Post";
-import {addPostActionCreator, onPostChangeActionCreator} from "../../../Redux/State";
+import {addPostActionCreator, onPostChangeActionCreator} from "../../../Redux/profile-reducer";
 
 
 
 const MyPosts = (props) => {
 
-    let postsElements = props.posts.map(p => <Post message={p.post} like={p.like}/>)
+    let postsElements = props.addPost.posts.map(p => <Post message={p.post} like={p.like}/>)
 
     let onAddPost = () => {
         props.dispatch(addPostActionCreator())
@@ -28,8 +28,10 @@ const MyPosts = (props) => {
                 <div>
                     <div>
                         <input onChange={onPostChange}
-                               value={props.newPostText}
-                               className={s.input}/>
+                               value={props.addPost.newPostText}
+                               className={s.input}
+                               placeholder="What's new?"
+                        />
                     </div>
                     <div className={s.btnBlock}>
                         <button onClick={ onAddPost} className={s.btn}>Add post</button>

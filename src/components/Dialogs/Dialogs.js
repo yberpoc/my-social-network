@@ -2,22 +2,22 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {addMessageActionCreator, onDialogChangeActionCreator} from "../../Redux/State";
 
 const Dialogs = (props) => {
+    debugger;
+    let dialogElements = props.addMessage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
+    let messagesElements = props.addMessage.messages.map(m => <Message message={m.message}/>)
 
-    let dialogElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
-    let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message}/>)
 
-    let newMessageText = React.createRef()
 
     let addMessage = () => {
-        let newMessage = props.dialogsPage.newDialogMessage
-        props.addMessge(newMessage)
+        props.dispatch(addMessageActionCreator())
     }
 
-    let onDialogChange = () =>{
-        let text = newMessageText.current.value
-        props.updateNewMessage(text)
+    let onDialogChange = (e) =>{
+        let text = e.target.value
+        props.dispatch(onDialogChangeActionCreator(text))
     }
 
     return (
@@ -31,10 +31,8 @@ const Dialogs = (props) => {
                     <div className={s.inputBlock}>
                         <div className={s.containerInput}>
                             <input  className={s.input}
-                                    ref={newMessageText}
                                     onChange={ onDialogChange }
-                                    value={props.dialogsPage.newDialogMessage
-                                    } type="text"/>
+                                    value={props.addMessage.newDialogMessage} type="text"/>
                             <button
                                 className={s.btn}
                                 onClick={ addMessage }

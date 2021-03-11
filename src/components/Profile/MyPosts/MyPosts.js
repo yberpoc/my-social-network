@@ -1,20 +1,22 @@
 import React from 'react'
 import s from './MyPosts.module.css'
 import Post from "./Posts/Post";
+import {addPostActionCreator, onPostChangeActionCreator} from "../../../Redux/State";
+
+
 
 const MyPosts = (props) => {
 
     let postsElements = props.posts.map(p => <Post message={p.post} like={p.like}/>)
 
-    let newPostElements = React.createRef()
-
     let onAddPost = () => {
-        props.addPost()
+        props.dispatch(addPostActionCreator())
     }
 
-    let onPostChange = () => {
-        let text = newPostElements.current.value
-        props.updateNewPostText(text);
+    let onPostChange = (e) => {
+        let text = e.target.value
+        let action = onPostChangeActionCreator(text)
+        props.dispatch(action);
     }
 
     return (
@@ -25,7 +27,9 @@ const MyPosts = (props) => {
                 </div>
                 <div>
                     <div>
-                        <input ref={newPostElements} onChange={onPostChange} value={props.newPostText} className={s.input}/>
+                        <input onChange={onPostChange}
+                               value={props.newPostText}
+                               className={s.input}/>
                     </div>
                     <div className={s.btnBlock}>
                         <button onClick={ onAddPost} className={s.btn}>Add post</button>

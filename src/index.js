@@ -3,25 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import state, {addMessge, updateNewMessage, updateNewPostText} from "./Redux/State";
-import {addPost} from "./Redux/State";
-import {subscribe} from "./Redux/State";
+import store from "./Redux/State";
 
-let render = () => {
+
+let render = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={state}
-                 addPost={addPost}
-                 addMessge={addMessge}
-                 updateNewPostText={updateNewPostText}
-                 updateNewMessage={updateNewMessage}
+                 dispatch={store.dispatch.bind(store)}
             />
         </BrowserRouter>, document.getElementById('root')
     );
 }
 
-render(state);
-subscribe(render);
+render(store.getState());
+store.subscribe(render);
 
 
 
